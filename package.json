@@ -1,0 +1,26 @@
+{
+    "name": "@becklyn/router",
+    "description": "The JS implementation of Symfony's Router.",
+    "author": "Becklyn Studios <hello@becklyn.com>",
+    "homepage": "https://github.com/Becklyn/javascript-router",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/Becklyn/javascript-router.git"
+    },
+    "version": "0.0.1",
+    "scripts": {
+        "build": "node_modules/.bin/tsc --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty --noUnusedLocals",
+        "dev": "node_modules/.bin/tsc --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
+        "prepublishOnly": "npm run-script build"
+    },
+    "dependencies": {
+        "mojave": "^4.4.0"
+    },
+    "devDependencies": {
+        "typescript": "^3.5.3"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "type": "library"
+}
