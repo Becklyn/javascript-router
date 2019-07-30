@@ -8,19 +8,32 @@
         "url": "git://github.com/Becklyn/javascript-router.git"
     },
     "version": "0.0.1",
+    "main": "src/index.js",
     "scripts": {
         "build": "node_modules/.bin/tsc --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty --noUnusedLocals",
         "dev": "node_modules/.bin/tsc --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
-        "prepublishOnly": "npm run-script build"
+        "prepublishOnly": "npm run-script build",
+        "test": "npm run-script build && ava"
     },
     "dependencies": {
-        "mojave": "^4.4.0"
+        "mojave": "^4.4.0",
+        "qss": "^2.0.3"
     },
     "devDependencies": {
+        "ava": "^2.2.0",
         "typescript": "^3.5.3"
     },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/"
+    },
+    "ava": {
+        "files": [
+            "tests/*",
+            "!tests/helpers/*"
+        ],
+        "require": [
+            "esm"
+        ]
     },
     "type": "library"
 }
