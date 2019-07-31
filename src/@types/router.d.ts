@@ -1,4 +1,4 @@
-declare module BecklynJavaScriptRouter
+export module BecklynJavaScriptRouter
 {
     type TextToken = [
         "text", // type
