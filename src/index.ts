@@ -178,7 +178,7 @@ export class Router
 
         if (missingParameters.length > 0)
         {
-            throw new Error(`Some mandatory parameters are missing ("${missingParameters.join('", "')}")`);
+            throw new Error(`Failed to generate route '${name}': Some mandatory parameters are missing ("${missingParameters.join('", "')}")`);
         }
         //endregion
 
