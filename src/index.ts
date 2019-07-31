@@ -1,11 +1,8 @@
 import {hasOwnProperty} from "mojave/runtime";
 import {encode} from "qss";
-import Context = BecklynJavaScriptRouter.Context;
-import RouteCollection = BecklynJavaScriptRouter.RouteCollection;
-import Token = BecklynJavaScriptRouter.Token;
-import PortMapping = BecklynJavaScriptRouter.PortMapping;
+import {BecklynJavaScriptRouter} from "./@types/router";
 
-const DEFAULT_PORTS: PortMapping = {
+const DEFAULT_PORTS: BecklynJavaScriptRouter.PortMapping = {
     http: 80,
     https: 443,
 };
@@ -42,7 +39,7 @@ function sanitizeRegex (pattern: string) : string
 /**
  * Compiles the tokens to a string
  */
-function compileTokens (tokens: Token[], parameters: RouteParameters) : string
+function compileTokens (tokens: BecklynJavaScriptRouter.Token[], parameters: RouteParameters) : string
 {
     let compiled = tokens.map(token =>
     {
@@ -135,13 +132,13 @@ function generateFragment (parameters: RouteParameters) : string
  */
 export class Router
 {
-    private context: Context = {
+    private context: BecklynJavaScriptRouter.Context = {
         baseUrl: "",
         host: "",
         ports: DEFAULT_PORTS,
         scheme: "https",
     };
-    private routes: RouteCollection = {};
+    private routes: BecklynJavaScriptRouter.RouteCollection = {};
 
 
     /**
