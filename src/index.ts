@@ -93,7 +93,7 @@ function stringifyValue (value: string|number|boolean|null|undefined, explicitFa
 function generateQuery (variables: string[], parameters: RouteParameters) : string|null
 {
     // use all parameters as default
-    let surplus: RouteParameters = parameters;
+    let surplus = parameters;
 
     // set all parameters to undefined that are already "used" as variables
     variables.forEach(name => surplus[name] = undefined);
