@@ -87,7 +87,7 @@ function stringifyValue (value: string|number|boolean|null|undefined, explicitFa
 /**
  * Generates the query string
  */
-function generateQuery (variables: string[], parameters: RouteParameters) : string|null
+function generateQuery (variables: string[], parameters: RouteParameters) : string
 {
     // use all parameters as default
     let surplus = parameters;
@@ -182,7 +182,7 @@ export class Router
         try
         {
             let host = compileTokens(route.host, parameters);
-            let segments = [];
+            let segments: string[] = [];
             let isMissingRequiredScheme = route.schemes.length > 0 && -1 === route.schemes.indexOf(this.context.scheme);
             let includeScheme = false;
             let scheme = isMissingRequiredScheme
