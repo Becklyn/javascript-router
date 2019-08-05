@@ -23,9 +23,6 @@
         "ava": "^2.2.0",
         "typescript": "^3.5.3"
     },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
-    },
     "ava": {
         "files": [
             "tests/*",
