@@ -7,7 +7,7 @@
         "type": "git",
         "url": "git://github.com/Becklyn/javascript-router.git"
     },
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "src/index.js",
     "scripts": {
         "build": "node_modules/.bin/tsc --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty --noUnusedLocals",
