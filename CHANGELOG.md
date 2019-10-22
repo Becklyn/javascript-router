@@ -1,3 +1,10 @@
+1.0.2
+=====
+
+*   Add `module` key in `package.json`.
+*   Remove dependency on `mojave`.
+
+
 1.0.1
 =====
 

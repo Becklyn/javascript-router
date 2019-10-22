@@ -1,4 +1,3 @@
-import {hasOwnProperty} from "mojave/runtime";
 import {encode} from "qss";
 import {BecklynJavaScriptRouter} from "./@types/router";
 
@@ -99,11 +98,6 @@ function generateQuery (variables: string[], parameters: RouteParameters) : stri
     let filtered: RouteParameters = {};
     for (let name in surplus)
     {
-        if (!hasOwnProperty(surplus, name))
-        {
-            continue;
-        }
-
         if (null != surplus[name] && "_fragment" !== name)
         {
             filtered[name] = stringifyValue(surplus[name], true);

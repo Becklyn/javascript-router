@@ -9,6 +9,7 @@
     },
     "version": "1.0.1",
     "main": "src/index.js",
+    "module": "src/index.js",
     "scripts": {
         "build": "node_modules/.bin/tsc --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty --noUnusedLocals",
         "dev": "node_modules/.bin/tsc --noEmitOnError --noErrorTruncation --listEmittedFiles --pretty -w",
@@ -16,11 +17,11 @@
         "test": "npm run-script build && ava"
     },
     "dependencies": {
-        "mojave": "^4.4.0",
         "qss": "^2.0.3"
     },
     "devDependencies": {
         "ava": "^2.2.0",
+        "esm": "^3.2.25",
         "typescript": "^3.5.3"
     },
     "ava": {
