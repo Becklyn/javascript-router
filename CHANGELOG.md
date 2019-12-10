@@ -1,3 +1,9 @@
+1.0.3
+=====
+
+*   (bug) Ensure that passed parameters are never modified.
+
+
 1.0.2
 =====
 
