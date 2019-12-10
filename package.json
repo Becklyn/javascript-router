@@ -7,7 +7,7 @@
         "type": "git",
         "url": "git://github.com/Becklyn/javascript-router.git"
     },
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "src/index.js",
     "module": "src/index.js",
     "scripts": {
