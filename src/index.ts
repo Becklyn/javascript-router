@@ -27,7 +27,7 @@ export enum ReferenceType
  * Sanitizes the pattern so that it works in JS.
  *
  * Sanitized cases:
- *      * A double + (`++`, possesive +) isn't supported in JS, so we just use a single `+` instead.
+ *      * A double + (`++`, possessive +) isn't supported in JS, so we just use a single `+` instead.
  */
 function sanitizeRegex (pattern: string) : string
 {
