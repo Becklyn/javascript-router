@@ -20,7 +20,7 @@
         "qss": "^2.0.3"
     },
     "devDependencies": {
-        "ava": "^2.2.0",
+        "ava": "^2.4.0",
         "esm": "^3.2.25",
         "typescript": "^3.5.3"
     },
