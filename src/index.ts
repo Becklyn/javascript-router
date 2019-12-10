@@ -27,7 +27,7 @@ export enum ReferenceType
  * Sanitizes the pattern so that it works in JS.
  *
  * Sanitized cases:
- *      * A double + (`++`, possesive +) isn't supported in JS, so we just use a single `+` instead.
+ *      * A double + (`++`, possessive +) isn't supported in JS, so we just use a single `+` instead.
  */
 function sanitizeRegex (pattern: string) : string
 {
@@ -38,7 +38,7 @@ function sanitizeRegex (pattern: string) : string
 /**
  * Compiles the tokens to a string
  */
-function compileTokens (tokens: BecklynJavaScriptRouter.Token[], parameters: RouteParameters) : string
+function compileTokens (tokens: BecklynJavaScriptRouter.Token[], parameters: Readonly<RouteParameters>) : string
 {
     let compiled = tokens.map(token =>
     {
@@ -86,21 +86,20 @@ function stringifyValue (value: string|number|boolean|null|undefined, explicitFa
 /**
  * Generates the query string
  */
-function generateQuery (variables: string[], parameters: RouteParameters) : string
+function generateQuery (variables: string[], parameters: Readonly<RouteParameters>) : string
 {
-    // use all parameters as default
-    let surplus = parameters;
+    let usedVariables: {[name: string]: boolean} = {};
 
-    // set all parameters to undefined that are already "used" as variables
-    variables.forEach(name => surplus[name] = undefined);
+    // Mark all used variables
+    variables.forEach(name => usedVariables[name] = true);
 
     // filter all null / undefined parameters
     let filtered: RouteParameters = {};
-    for (let name in surplus)
+    for (let name in parameters)
     {
-        if (null != surplus[name] && "_fragment" !== name)
+        if (!usedVariables[name] && null != parameters[name] && "_fragment" !== name)
         {
-            filtered[name] = stringifyValue(surplus[name], true);
+            filtered[name] = stringifyValue(parameters[name], true);
         }
     }
 
@@ -112,7 +111,7 @@ function generateQuery (variables: string[], parameters: RouteParameters) : stri
 /**
  * Generates the fragment part
  */
-function generateFragment (parameters: RouteParameters) : string
+function generateFragment (parameters: Readonly<RouteParameters>) : string
 {
     let fragment = parameters["_fragment"];
 
@@ -148,7 +147,7 @@ export class Router
     /**
      * Generates a URL or path for a specific route based on the given parameters.
      */
-    public generate (name: string, parameters: RouteParameters = {}, referenceType: ReferenceType = ReferenceType.ABSOLUTE_PATH) : string
+    public generate (name: string, parameters: Readonly<RouteParameters> = {}, referenceType: ReferenceType = ReferenceType.ABSOLUTE_PATH) : string
     {
         let route = this.routes[name];
 
@@ -169,7 +168,8 @@ export class Router
 
         if (missingParameters.length > 0)
         {
-            throw new Error(`Failed to generate route '${name}': Some mandatory parameters are missing ("${missingParameters.join('", "')}")`);
+            let paramNames = Object.keys(parameters);
+            throw new Error(`Failed to generate route '${name}': Some mandatory parameters are missing or undefined ("${missingParameters.join('", "')}"). Provided were ${paramNames.length ? paramNames.join(", ") : "no parameters"}`);
         }
         //endregion
 

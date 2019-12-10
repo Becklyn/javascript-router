@@ -98,8 +98,8 @@ runDifferentParametersTests(
             expected: "/prefix/123/suffix",
         },
         {
-            params: [{test: 123, q1: "abc", q2: 123, q3: true, q4: false, q5: null, q6: undefined}],
-            expected: "/prefix/123/suffix?q1=abc&q2=123&q3=1&q4=0",
+            params: [{test: 123, q1: "abc", q2: 123, q3: true, q4: false, q5: null, q6: undefined, _fragment: "abc"}],
+            expected: "/prefix/123/suffix?q1=abc&q2=123&q3=1&q4=0#abc",
         },
     ]
 );
